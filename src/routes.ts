@@ -1,9 +1,9 @@
-import Login from './Login.svelte';
-import Index from './Index.svelte';
+import Login from './pages/Login.svelte';
+import Home from './pages/Home.svelte';
 import NotFound from './NotFound.svelte';
 
 export default {
-  '/': Index,
+  '/': Home,
   '/login': Login,
   '*': NotFound,
 };
