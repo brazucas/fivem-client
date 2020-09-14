@@ -17,5 +17,10 @@
                 Login
             </button>
         </a>
+        <a href="#/registrar">
+            <button>
+                Registrar
+            </button>
+        </a>
     </div>
 </Window>

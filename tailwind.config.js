@@ -5,6 +5,9 @@ module.exports = {
   },
   purge: [],
   theme: {
+    colors: {
+      'brz-gray-900': '	#222222',
+    },
     extend: {},
   },
   variants: {},
