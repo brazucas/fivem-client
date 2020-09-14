@@ -48,3 +48,11 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+.w-content {
+	width: fit-content;
+}
+
+input {
+	color: black;
+}

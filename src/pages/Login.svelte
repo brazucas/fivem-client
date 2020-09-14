@@ -1,5 +1,6 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
+  import Window from '../components/Window.svelte';
 
   let playerName = 'Mandrakke_Army';
 
@@ -9,7 +10,7 @@
   });
 </script>
 
-<div class="text-white">
+<Window>
     <div class="text-lg">
         Bem vindo de volta, {playerName}!
     </div>
@@ -25,8 +26,8 @@
             <input type="text" bind:value={$form.password}/>
         </label>
 
-        <div class="flex content-between items-center">
-            <button class="">
+        <div class="flex content-between items-center w-full">
+            <button>
                 Entrar
             </button>
 
@@ -35,4 +36,4 @@
             </div>
         </div>
     </form>
-</div>
+</Window>
