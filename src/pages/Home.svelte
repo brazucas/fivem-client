@@ -1,5 +1,21 @@
-<div class="font-bold text-xl text-center">
-    GUI do servidor
-</div>
+<script>
+  import Window from "../components/Window.svelte";
+</script>
 
-<a href="#/login">Login</a>
+<Window showHeader={false} minHeight={true}>
+    <div class="p-5">
+        <div class="text-center text-lg">
+            GUI do servidor
+        </div>
+
+        <div class="text-center italic text-sm">
+            Abaixo as janelas prontas para uso no servidor.
+        </div>
+
+        <a href="#/login">
+            <button>
+                Login
+            </button>
+        </a>
+    </div>
+</Window>

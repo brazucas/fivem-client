@@ -1,5 +1,6 @@
 <script>
-
+  export let showHeader = true;
+  export let minHeight = false;
 </script>
 
 <style lang="scss">
@@ -14,10 +15,12 @@
 </style>
 
 <div class="float text-white">
-    <div class="container go-up delay-1">
-        <div class="header border-b-2 border-white border-solid">
-            <img src="build/images/logo.png" alt="" width="120px" class="pt-3 pb-3"/>
-        </div>
+    <div class="container go-up delay-1" style={ minHeight ? `min-height: 80px` : '' }>
+        {#if showHeader}
+            <div class="header border-b-2 border-white border-solid">
+                <img src="build/images/logo.png" alt="" width="120px" class="pt-3 pb-3"/>
+            </div>
+        {/if}
 
         <slot></slot>
     </div>
