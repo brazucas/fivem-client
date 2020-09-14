@@ -45,7 +45,7 @@ _Veja toda a GUI do servidor online._
     
 ##### Publicação em produção
    
-    $ yarn publish
+    $ yarn push
     
 _Os arquivos compilados ficam na pasta `public`._
 
