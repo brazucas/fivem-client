@@ -92,6 +92,10 @@ export default {
           src: "src/images",
           dest: "public/build/",
         },
+        {
+          src: 'node_modules/bootstrap/dist/**/*',
+          dest: 'public/vendor/bootstrap'
+        }
       ]
     })
   ],

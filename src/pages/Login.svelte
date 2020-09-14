@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
+  import {writable} from 'svelte/store';
   import Window from '../components/Window.svelte';
 
   let playerName = 'Mandrakke_Army';
@@ -16,20 +16,18 @@
     </div>
 
     <form>
-        <label>
-            <span>Nick:</span>
-            <input type="text" bind:value={$form.playerName}/>
-        </label>
+        <div class="form-group">
+            <label>Nick</label>
+            <input type="text" class="form-control" bind:value={form.playerName}
+                   placeholder="Insira seu nick conforme o cadastro">
+        </div>
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="password" class="form-control" bind:value={form.password} placeholder="Sua senha no servidor">
+        </div>
 
-        <label>
-            <span>Senha:</span>
-            <input type="text" bind:value={$form.password}/>
-        </label>
-
-        <div class="flex content-between items-center w-full">
-            <button>
-                Entrar
-            </button>
+        <div class="flex justify-between items-center">
+            <button type="submit" class="btn btn-primary">Entrar</button>
 
             <div>
                 Esqueci minha senha

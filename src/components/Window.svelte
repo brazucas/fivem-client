@@ -13,10 +13,10 @@
   }
 </style>
 
-<div class="float">
+<div class="float text-white">
     <div class="container go-up delay-1">
-        <div class="border-b-2 border-white border-solid">
-            Brazuca's Server
+        <div class="header border-b-2 border-white border-solid">
+            <img src="build/images/logo.png" alt="" width="120px" class="pt-3 pb-3"/>
         </div>
 
         <slot></slot>
