@@ -1,6 +1,6 @@
 {
   "name": "svelte-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "watch:tailwind": "postcss public/tailwind.css -o public/index.css -w",
     "build:tailwind": "cross-env NODE_ENV=production postcss public/tailwind.css -o public/index.css",
@@ -8,7 +8,7 @@
     "start": "sirv public",
     "serve": "serve public -p 80",
     "dev": "concurrently \"rollup -c -w\" \"yarn run watch:tailwind\"",
-    "publish": "yarn build && npx angular-cli-ghpages --dir=public"
+    "push": "yarn build && npx angular-cli-ghpages --dir=public"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
