@@ -6,6 +6,10 @@
     <td><img src="https://github.com/brazucas/ragemp/raw/master/demo/demo4.png" width="300px"/></td>
 </table>
 
+## [Versão WEB](http://gui.brz.gg)
+
+_Veja toda a GUI do servidor online._
+
 ### Contribuindo
 
 - Clone o projeto.
@@ -17,6 +21,9 @@
 
     - [NodeJS](https://nodejs.org/en/download/package-manager/) 14 ou superior.
     - [Yarn](https://classic.yarnpkg.com/en/docs/install)
+    - [NPX](https://www.npmjs.com/package/npx)
+        
+            $ yarn add -D npx
 
 - Instale os pacotes globais
 
@@ -35,6 +42,10 @@
 ##### Build para produção
    
     $ yarn build
+    
+##### Publicação em produção
+   
+    $ yarn publish
     
 _Os arquivos compilados ficam na pasta `public`._
 
