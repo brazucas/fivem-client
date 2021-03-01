@@ -15,6 +15,8 @@
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@tsconfig/svelte": "^1.0.0",
+    "@types/ragemp-c": "github:CocaColaBear/types-ragemp-c#master",
+    "@types/ragemp-cef": "https://github.com/eisengrind/types-ragemp-cef.git",
     "autoprefixer": "^9.8.6",
     "node-sass": "^4.14.1",
     "postcss-cli": "^7.1.2",
@@ -34,8 +36,10 @@
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.2",
     "postcss": "^7.0.32",
+    "rxjs": "^6.6.6",
     "sirv-cli": "^1.0.0",
     "svelte-spa-router": "^2.2.0",
+    "sweetalert2": "^10.15.5",
     "tailwindcss": "^1.8.9"
   }
 }
