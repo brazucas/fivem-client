@@ -93,6 +93,10 @@ export default {
           dest: "public/build/",
         },
         {
+          src: "src/assets",
+          dest: "public/build/",
+        },
+        {
           src: 'node_modules/bootstrap/dist/**/*',
           dest: 'public/vendor/bootstrap'
         }

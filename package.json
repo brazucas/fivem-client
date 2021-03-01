@@ -34,6 +34,7 @@
   "dependencies": {
     "bootstrap": "^4.5.2",
     "concurrently": "^5.3.0",
+    "countup.js": "^2.0.7",
     "cross-env": "^7.0.2",
     "postcss": "^7.0.32",
     "rxjs": "^6.6.6",
