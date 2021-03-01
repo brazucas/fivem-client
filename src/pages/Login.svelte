@@ -21,9 +21,15 @@
 </script>
 
 <Window>
-    <div class="text-lg">
-        Bem vindo de volta, {playerName}!
-    </div>
+    {#if playerName}
+        <div class="text-lg">
+            Bem vindo de volta, {playerName}!
+        </div>
+    {:else}
+        <div class="text-lg">
+            Bem vindo ao Brazuca's Server!
+        </div>
+    {/if}
 
     <form on:submit|preventDefault={enviar}>
         <div class="form-group">
