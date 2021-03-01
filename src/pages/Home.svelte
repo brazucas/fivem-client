@@ -17,5 +17,11 @@
                 Login
             </button>
         </a>
+
+        <a href="#/gui">
+            <button>
+                GUI
+            </button>
+        </a>
     </div>
 </Window>

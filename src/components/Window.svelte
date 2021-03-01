@@ -5,7 +5,7 @@
   export let canClose = true;
   export let position = 'center';
   export let layout = true;
-  export let top = 50;
+  export let top;
   export let anim = true;
 
   function fechar() {

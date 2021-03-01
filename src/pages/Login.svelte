@@ -20,7 +20,7 @@
   }
 </script>
 
-<Window>
+<Window canClose={false}>
     {#if playerName}
         <div class="text-lg">
             Bem vindo de volta, {playerName}!
