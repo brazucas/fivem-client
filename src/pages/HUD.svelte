@@ -1,7 +1,7 @@
 <script lang="ts">
   import Window from "../components/Window.svelte";
-  import Indicator from "../components/GUI/Indicator.svelte";
-  import { jogador, playerGuiMenuAtivo, voiceChatListeners } from "../services/common";
+  import Indicator from "../components/HUD/Indicator.svelte";
+  import { jogador, playerHudMenuAtivo, voiceChatListeners } from "../services/common";
   import { CountUp } from "countup.js";
   import { onMount } from "svelte";
   import ImgCdn from "../components/ImgCdn.svelte";
@@ -19,7 +19,7 @@
 
   let menuAtivo = false;
 
-  playerGuiMenuAtivo.subscribe((ativo) => menuAtivo = ativo);
+  playerHudMenuAtivo.subscribe((ativo) => menuAtivo = ativo);
 
   function hideMenus() {
     Object.keys(submenu).forEach(key => {
@@ -79,12 +79,12 @@
     --ion-background-color: transparent;
   }
 
-  .gui-item {
+  .hud-item {
     display: flex;
     align-items: center;
     margin: 10px 0;
 
-    .gui-item-container {
+    .hud-item-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -115,11 +115,11 @@
     &.headset {
       margin-left: 50px;
 
-      .gui-item-container {
+      .hud-item-container {
         align-items: flex-end;
       }
 
-      .gui-icon {
+      .hud-icon {
         width: 50px;
 
         padding: 5px 9px;
@@ -127,7 +127,7 @@
         border-radius: 56px;
       }
 
-      .gui-indicator {
+      .hud-indicator {
         background-color: #8c601e;
         border: 1px solid #8c601e;
         border-radius: 15px;
@@ -140,7 +140,7 @@
       }
     }
 
-    .gui-icon {
+    .hud-icon {
       width: 50px;
 
       &.fome {
@@ -168,7 +168,7 @@
       }
     }
 
-    .gui-indicator {
+    .hud-indicator {
       margin-bottom: 5px;
       width: 150px;
       color: orange;
@@ -253,8 +253,8 @@
 </style>
 
 <Window position="top-right" top="230" anim={false} showHeader={false} layout={false}>
-    <div class="gui-item go-up delay-1">
-        <div class="gui-item-container">
+    <div class="hud-item go-up delay-1">
+        <div class="hud-item-container">
             <div style="width: 50px;">
                 <div class="go-up fome-text delay-4">
                     {#if diffFome > 0}+{/if}
@@ -262,24 +262,24 @@
                 </div>
             </div>
 
-            <div class="gui-icon fome">
+            <div class="hud-icon fome">
                 <ImgCdn fileName="player-gui/meat.png"/>
             </div>
 
             <div>
-                <div class="gui-indicator barra-normal">
+                <div class="hud-indicator barra-normal">
                     <Indicator value={$jogador.fome} activeColor="#ffbf00" backgroundColor="#9e7600">
                     </Indicator>
                 </div>
 
-                <div class="gui-indicator barra-invertida">
+                <div class="hud-indicator barra-invertida">
                     <Indicator invertido={true} value={$jogador.sede}
                                activeColor="#00ffe5" backgroundColor="#009e8e">
                     </Indicator>
                 </div>
             </div>
 
-            <div class="gui-icon sede">
+            <div class="hud-icon sede">
                 <ImgCdn fileName="player-gui/drink.png"/>
             </div>
 
@@ -292,8 +292,8 @@
         </div>
     </div>
 
-    <div class="gui-item go-up delay-3">
-        <div class="gui-item-container">
+    <div class="hud-item go-up delay-3">
+        <div class="hud-item-container">
             <div style="width: 50px;">
                 <div class="go-up sono-text delay-4">
                     {#if diffSono > 0}+{/if}
@@ -301,19 +301,19 @@
                 </div>
             </div>
 
-            <div class="gui-icon sono">
+            <div class="hud-icon sono">
                 <ImgCdn fileName="player-gui/bed.png"/>
             </div>
 
             <div>
-                <div class="gui-indicator barra-normal">
+                <div class="hud-indicator barra-normal">
                     <Indicator value={$jogador.sono} activeColor="#e95bff"
                                backgroundColor="#682972">
 
                     </Indicator>
                 </div>
 
-                <div class="gui-indicator barra-invertida">
+                <div class="hud-indicator barra-invertida">
                     <Indicator invertido={true} value={$jogador.forcaFisica}
                                activeColor="#32d302" backgroundColor="#1a7000">
 
@@ -321,7 +321,7 @@
                 </div>
             </div>
 
-            <div class="gui-icon forca">
+            <div class="hud-icon forca">
                 <ImgCdn fileName="player-gui/strength.png"/>
             </div>
 
@@ -334,25 +334,25 @@
         </div>
     </div>
 
-    <div class="gui-item go-up delay-4 headset">
-        <div class="gui-item-container">
-            <div class="gui-icon">
+    <div class="hud-item go-up delay-4 headset">
+        <div class="hud-item-container">
+            <div class="hud-icon">
                 <ImgCdn fileName="player-gui/headset.png"/>
             </div>
 
-            <div class="gui-indicator">
+            <div class="hud-indicator">
                 { $voiceChatListeners.length }
             </div>
         </div>
     </div>
 
-    <div class="gui-item go-up delay-6">
+    <div class="hud-item go-up delay-6">
         <div class="dinheiro">
             R$ <span id="dinheiro">{ $jogador.dinheiro }</span>
         </div>
     </div>
 
-    <div class="gui-item go-up delay-7">
+    <div class="hud-item go-up delay-7">
         <div class="creditos">
             C$ <span id="creditos">{ $jogador.creditos }</span>
         </div>

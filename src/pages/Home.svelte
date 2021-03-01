@@ -18,9 +18,9 @@
             </button>
         </a>
 
-        <a href="#/gui">
+        <a href="#/hud">
             <button>
-                GUI
+                HUD
             </button>
         </a>
     </div>
