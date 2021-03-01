@@ -5,7 +5,7 @@
   export let canClose = true;
   export let position = 'center';
   export let layout = true;
-  export let top: number;
+  export let top = 50;
   export let anim = true;
 
   function fechar() {
@@ -103,7 +103,8 @@
      class:centro-esquerdo={position === 'middle-left'}
      class:centro-direito={position === 'middle-right'}
      class:inferior-esquerdo={position === 'bottom-left'}
-     class:inferior-direito={position === 'bottom-right'}>
+     class:inferior-direito={position === 'bottom-right'}
+     style="top: {top}px">
     <div class:container={layout} class="go-up delay-1" style={ minHeight ? `min-height: 80px` : '' }>
         {#if showHeader}
             <div class="header border-b-2 border-white border-solid">
@@ -111,7 +112,7 @@
             </div>
 
             {#if canClose}
-                <div on:click={fechar} >Fechar</div>
+                <div on:click={fechar}>Fechar</div>
             {/if}
         {/if}
 

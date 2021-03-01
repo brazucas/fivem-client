@@ -88,3 +88,8 @@ export enum Creditos {
   MAXIMO = 99999,
   MINIMO = 0,
 }
+
+export interface VoiceChatListener {
+  playerId: number,
+  playerName: string,
+}

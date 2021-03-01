@@ -1,6 +1,10 @@
 import { writable } from "svelte/store";
-import { Creditos, Dinheiro, Fome, ForcaFisica, Jogador, Sede, Sono } from "../interfaces/brazucas";
+import { Creditos, Dinheiro, Fome, ForcaFisica, Jogador, Sede, Sono, VoiceChatListener } from "../interfaces/brazucas";
 import Swal from 'sweetalert2';
+import { BehaviorSubject, Observable } from "rxjs";
+
+export const playerGuiMenuAtivo = new BehaviorSubject<boolean>(false);
+export const voiceChatListeners = writable<Array<VoiceChatListener>>([]);
 
 export const jogador = writable<Jogador>({
   nome: 'Carregando...',
