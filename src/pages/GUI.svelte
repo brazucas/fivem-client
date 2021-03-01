@@ -4,6 +4,7 @@
   import { jogador, playerGuiMenuAtivo, voiceChatListeners } from "../services/common";
   import { CountUp } from "countup.js";
   import { onMount } from "svelte";
+  import ImgCdn from "../components/ImgCdn.svelte";
 
   let diffForcaFisica: number;
   let diffSono: number;
@@ -262,7 +263,7 @@
             </div>
 
             <div class="gui-icon fome">
-                <img src="build/assets/player-gui/meat.png" alt=""/>
+                <ImgCdn fileName="player-gui/meat.png"/>
             </div>
 
             <div>
@@ -279,7 +280,7 @@
             </div>
 
             <div class="gui-icon sede">
-                <img src="build/assets/player-gui/drink.png" alt=""/>
+                <ImgCdn fileName="player-gui/drink.png"/>
             </div>
 
             <div style="width: 50px;">
@@ -301,7 +302,7 @@
             </div>
 
             <div class="gui-icon sono">
-                <img src="build/assets/player-gui/bed.png" alt=""/>
+                <ImgCdn fileName="player-gui/bed.png"/>
             </div>
 
             <div>
@@ -321,7 +322,7 @@
             </div>
 
             <div class="gui-icon forca">
-                <img src="build/assets/player-gui/strength.png" alt=""/>
+                <ImgCdn fileName="player-gui/strength.png"/>
             </div>
 
             <div style="width: 50px;">
@@ -336,7 +337,7 @@
     <div class="gui-item go-up delay-4 headset">
         <div class="gui-item-container">
             <div class="gui-icon">
-                <img src="build/assets/player-gui/headset.png" alt=""/>
+                <ImgCdn fileName="player-gui/headset.png"/>
             </div>
 
             <div class="gui-indicator">
