@@ -245,6 +245,7 @@
                         </div>
                     {/if}
                     <div class:text-l={mensagem.eu} class:text-r={!mensagem.eu} class="text">
+                        <b>{ mensagem.autor.nome }</b>
                         <p>{ mensagem.mensagem }</p>
                         <p><small>{ mensagem.data }</small></p>
                     </div>
