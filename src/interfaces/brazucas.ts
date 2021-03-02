@@ -121,3 +121,21 @@ export namespace BrowserChat {
     data: Date,
   }
 }
+
+export interface DadosVeiculo {
+  modelo: string,
+  corPrimaria: string,
+  corSecundaria: string,
+  placa: string,
+  proprietario: string,
+  posicaoX: string,
+  posicaoY: string,
+  posicaoZ: string,
+  trancado: boolean,
+  motor: boolean,
+  transparencia: number,
+  tamanho: string,
+  valorOriginal: number,
+  valorVenda: number,
+  aVenda: boolean,
+}

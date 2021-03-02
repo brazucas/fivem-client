@@ -12,7 +12,7 @@
             Abaixo as janelas prontas para uso no servidor.
         </div>
 
-        <h3>Player não autenticado</h3>
+        <h3>Início</h3>
         <a href="#/login">
             <button>
                 Login
@@ -31,7 +31,7 @@
             </button>
         </a>
 
-        <h3>Player autenticado - Ferramentas</h3>
+        <h3>Jogador</h3>
         <a href="#/scoreboard">
             <button>
                 Informações do servidor (Scoreboard)
@@ -41,6 +41,13 @@
         <a href="#/celular">
             <button>
                 Celular
+            </button>
+        </a>
+
+        <h3>Administração</h3>
+        <a href="#/admin/criar-veiculo">
+            <button>
+                Criar veículos
             </button>
         </a>
 

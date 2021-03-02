@@ -42,6 +42,25 @@ export const mostrarErro = (error: any) => {
   })
 }
 
+export const toast = (mensagem: string, tipo = 'success', posicao = 'bottom', duracao = 3000) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: posicao as any,
+    showConfirmButton: false,
+    timer: duracao,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  });
+
+  Toast.fire({
+    icon: tipo as any,
+    title: mensagem
+  });
+}
+
 const obterMensagemDeErro = (e) => {
   return 'Um erro ocorreu ao processar sua solicitação, tente novamente mais tarde.';
 }
