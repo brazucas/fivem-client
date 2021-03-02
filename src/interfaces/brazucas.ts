@@ -1,3 +1,4 @@
+
 export enum BrazucasEventos {
   BROWSER = 'browser',
   SERVER = 'server',
@@ -110,4 +111,13 @@ export enum Creditos {
 export interface VoiceChatListener {
   playerId: number,
   playerName: string,
+}
+
+export namespace BrowserChat {
+  export interface Mensagem {
+    autor: JogadorSimples,
+    eu: boolean,
+    mensagem: string,
+    data: Date,
+  }
 }

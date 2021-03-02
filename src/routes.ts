@@ -4,6 +4,8 @@ import Home from './pages/Home.svelte';
 import Registro from './pages/Registro.svelte';
 import RecuperarAcesso from './pages/RecuperarAcesso.svelte';
 import Scoreboard from './pages/Scoreboard.svelte';
+import Celular from './pages/Celular.svelte';
+import Chat from './pages/Celular/Chat.svelte';
 import NotFound from './NotFound.svelte';
 
 export default {
@@ -12,6 +14,8 @@ export default {
   '/registro': Registro,
   '/recuperar-acesso': RecuperarAcesso,
   '/scoreboard': Scoreboard,
+  '/celular': Celular,
+  '/celular/chat': Chat,
   '/hud': HUD,
   '*': NotFound,
 };

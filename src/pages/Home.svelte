@@ -38,6 +38,12 @@
             </button>
         </a>
 
+        <a href="#/celular">
+            <button>
+                Celular
+            </button>
+        </a>
+
         <h3>Outros</h3>
         <a href="#/hud">
             <button>

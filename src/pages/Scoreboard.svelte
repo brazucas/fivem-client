@@ -2,6 +2,7 @@
   import Window from '../components/Window.svelte';
   import { servidor } from "../services/common";
 
+  // @TODO mock
   servidor.update((state) => {
     state.jogadores.push({
       id: 1,
