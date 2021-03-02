@@ -361,7 +361,7 @@
 
 <Window position="bottom-right" anim={false} showHeader={false} layout={false}>
     <div class="go-up delay-1">
-        <img src="build/assets/logotipo_full_web.png" alt="" width="120px"/>
+        <ImgCdn fileName="logotipo_full_web.png" width="120px"/>
     </div>
 </Window>
 
