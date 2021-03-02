@@ -18,6 +18,12 @@
             </button>
         </a>
 
+        <a href="#/registro">
+            <button>
+                Registro
+            </button>
+        </a>
+
         <a href="#/hud">
             <button>
                 HUD
