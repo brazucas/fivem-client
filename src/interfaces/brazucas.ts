@@ -4,6 +4,7 @@ export enum BrazucasEventos {
   AUTENTICAR_JOGADOR = 'AutenticarJogador',
   CRIAR_VEICULO = 'CriarVeiculo',
   REGISTRAR_JOGADOR = 'RegistrarJogador',
+  RECUPERAR_ACESSO = 'RecuperarAcesso',
   AUTENTICACAO_RESULTADO = 'AutenticacaoResultado',
   REGISTRO_RESULTADO = 'RegistroResultado',
   DADOS_JOGADOR = 'DadosJogador',
@@ -34,6 +35,11 @@ export interface RegistroResultado {
 
 export interface DadosLogin {
   usuario: string;
+  senha: string;
+}
+
+export interface DadosRecuperarAcesso {
+  codigo: string;
   senha: string;
 }
 

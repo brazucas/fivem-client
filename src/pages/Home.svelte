@@ -25,6 +25,12 @@
             </button>
         </a>
 
+        <a href="#/recuperar-acesso">
+            <button>
+                Recuperar acesso
+            </button>
+        </a>
+
         <h3>Outros</h3>
         <a href="#/hud">
             <button>
