@@ -12,7 +12,7 @@
         image: 'biomp/images/iphone6_front_black.png',
         scale: 0.5,
       });
-    }, 1000)
+    })
   });
 </script>
 
