@@ -12,6 +12,7 @@
             Abaixo as janelas prontas para uso no servidor.
         </div>
 
+        <h3>Player não autenticado</h3>
         <a href="#/login">
             <button>
                 Login
@@ -24,6 +25,7 @@
             </button>
         </a>
 
+        <h3>Outros</h3>
         <a href="#/hud">
             <button>
                 HUD
