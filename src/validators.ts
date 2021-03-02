@@ -2,7 +2,17 @@ import { soDigitos } from "./helpers";
 
 export const checkPlayerName = playerName =>
   new Promise(resolve => {
-    const available = !!playerName.match(/^[A-Za-z]+($|_[A-Za-z]+$)/i);
+    let available = !!playerName.match(/^[A-Za-z]+($|_[A-Za-z]+$)/i);
+
+    if (available) {
+      const nomes = playerName.split('_');
+
+      nomes.forEach((nome) => {
+        if (nome.length < 3) {
+          available = false;
+        }
+      });
+    }
     // if we return `true` then validation has passed
     setTimeout(() => resolve(available), 1);
   });

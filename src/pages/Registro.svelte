@@ -11,13 +11,17 @@
   const formValidation = object().shape({
     playerName: string()
       .required('O nick é obrigatório')
-      .test('nickInvalido', 'O nick é inválido. Apenas Nome e Nome_Sobrenome são aceitos', checkPlayerName),
+      .min(3, 'O nick deve ter no mínimo 3 caracteres')
+      .max(25, 'O nick deve ter no mínimo 25 caracteres')
+      .test('nickInvalido', 'O nick é inválido. Apenas Nome e Nome_Sobrenome são aceitos e cada nome deve ter no mínimo 3 letras. Ex: Abu, Mandrakke, Mandrakke_Army', checkPlayerName),
     email: string().required('O e-mail é obrigatório').email('O e-mail é inválido'),
     phone: string()
       .required('O telefone é obrigatório')
       .test('telefoneInvalido', 'O telefone é inválido.', checkBrazilianPhone),
     password: string()
       .required('A senha é obrigatória')
+      .min(8, 'A senha deve ter no mínimo 8 caracteres')
+      .max(16, 'A senha deve ter no máximo 16 caracteres')
       .test('senhaInvalida', 'A senha é inválida. São permitidas letras, números e caracteres especiais', checkPassword),
     passwordConfirmation: string()
       .required('A confirmação é obrigatória')
