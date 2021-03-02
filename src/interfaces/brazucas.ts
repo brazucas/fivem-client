@@ -65,6 +65,18 @@ export interface Jogador {
   creditos: number,
 }
 
+export interface JogadorSimples {
+  id: number,
+  nome: string,
+  ping: number,
+  nivel: number,
+}
+
+export interface ServidorInfo {
+  jogadoresOnline: number,
+  jogadores: JogadorSimples[],
+}
+
 export enum Fome {
   MAXIMO = 100,
   MINIMO = 0,

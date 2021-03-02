@@ -1,5 +1,15 @@
 import { writable } from "svelte/store";
-import { Creditos, Dinheiro, Fome, ForcaFisica, Jogador, Sede, Sono, VoiceChatListener } from "../interfaces/brazucas";
+import {
+  Creditos,
+  Dinheiro,
+  Fome,
+  ForcaFisica,
+  Jogador,
+  Sede,
+  ServidorInfo,
+  Sono,
+  VoiceChatListener
+} from "../interfaces/brazucas";
 import Swal from 'sweetalert2';
 import { BehaviorSubject } from "rxjs";
 
@@ -15,6 +25,11 @@ export const jogador = writable<Jogador>({
   sede: Sede.MAXIMO,
   dinheiro: Dinheiro.MINIMO,
   creditos: Creditos.MINIMO,
+});
+
+export const servidor = writable<ServidorInfo>({
+  jogadoresOnline: 0,
+  jogadores: [],
 });
 
 export const mostrarErro = (error: any) => {

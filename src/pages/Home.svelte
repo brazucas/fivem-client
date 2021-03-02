@@ -31,6 +31,13 @@
             </button>
         </a>
 
+        <h3>Player autenticado - Ferramentas</h3>
+        <a href="#/scoreboard">
+            <button>
+                Informações do servidor (Scoreboard)
+            </button>
+        </a>
+
         <h3>Outros</h3>
         <a href="#/hud">
             <button>
