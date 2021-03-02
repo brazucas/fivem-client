@@ -38,10 +38,10 @@ export interface DadosLogin {
 }
 
 export interface DadosRegistro {
+  usuario: string,
   email: string,
   celular: string,
   senha: string,
-  senhaConfirma: string,
 }
 
 export interface Jogador {

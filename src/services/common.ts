@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 import { Creditos, Dinheiro, Fome, ForcaFisica, Jogador, Sede, Sono, VoiceChatListener } from "../interfaces/brazucas";
 import Swal from 'sweetalert2';
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
 export const playerHudMenuAtivo = new BehaviorSubject<boolean>(false);
 export const voiceChatListeners = writable<Array<VoiceChatListener>>([]);
@@ -17,12 +17,15 @@ export const jogador = writable<Jogador>({
   creditos: Creditos.MINIMO,
 });
 
-export const mostrarErro = (mensagem: string) => Swal.fire({
-  title: 'Oops!',
-  text: obterMensagemDeErro(mensagem),
-  icon: 'error',
-  confirmButtonText: 'Fechar',
-})
+export const mostrarErro = (error: any) => {
+  console.error(error);
+  Swal.fire({
+    title: 'Oops!',
+    text: obterMensagemDeErro(error),
+    icon: 'error',
+    confirmButtonText: 'Fechar',
+  })
+}
 
 const obterMensagemDeErro = (e) => {
   return 'Um erro ocorreu ao processar sua solicitação, tente novamente mais tarde.';

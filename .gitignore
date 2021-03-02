@@ -6,3 +6,4 @@
 .vscode
 .idea
 /public/vendor
+/yarn-error.log
