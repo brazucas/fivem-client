@@ -1,4 +1,4 @@
-import { call } from './RageMPBrowserService';
+import { call } from './BrowserBridgeService';
 import { BrazucasEventos, DadosVeiculo } from "../../interfaces/brazucas";
 
 export function criarVeiculo(dados: DadosVeiculo): Promise<DadosVeiculo> {

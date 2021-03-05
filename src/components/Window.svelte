@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { call } from "../services/browser/BrowserBridgeService";
+
   export let showHeader = true;
   export let minHeight = false;
 
@@ -8,8 +10,10 @@
   export let top = false;
   export let anim = true;
 
-  function fechar() {
-    console.log('Fechando janela.');
+  console.log('>>> teste4');
+  const fechar = () => {
+    console.log('fechar!2');
+    call('browser/fechar', {})
   }
 </script>
 
@@ -94,7 +98,7 @@
   }
 </style>
 
-<div class="float text-white"
+<div class="float text-white z-10"
      class:centro={position === 'center'}
      class:superior-direito={position === 'top-right'}
      class:superior-esquerdo={position === 'top-left'}
@@ -119,3 +123,5 @@
         <slot></slot>
     </div>
 </div>
+
+<div class="z-0 absolute h-full w-full" on:click={fechar}></div>

@@ -3,16 +3,23 @@ import type { ServerEvent } from "../../interfaces/bridge";
 import { BrazucasEventos } from "../../interfaces/brazucas";
 import 'ragemp-cef';
 
-declare const mp: Mp;
-
 export const serverEvent$: Subject<ServerEvent> = new Subject();
 
 export function call<T>(event: string, data: any): Promise<T> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     const eventId = Math.round(Math.random() * 10000000);
 
     console.log(`Enviando evento ${BrazucasEventos.BROWSER}\nID: ${eventId}\nnome: ${event}\ndados: ${JSON.stringify(data)}`);
-    mp.trigger(BrazucasEventos.BROWSER, eventId, event, JSON.stringify(data));
+    // mp.trigger(BrazucasEventos.BROWSER, eventId, event, JSON.stringify(data));
+
+    await fetch(`http://${event}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
 
     const subscriber = serverEvent$.subscribe((serverEvent: ServerEvent) => {
       console.debug(`[EVENTO] (ID ${eventId}) ${JSON.stringify(serverEvent)}`);

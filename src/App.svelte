@@ -6,8 +6,8 @@
 <style type="text/scss">
   .body {
     /*background-color: red;*/
-    background: transparent;
-    background-size: cover;
+    background-color: transparent !important;
+    background-size: cover !important;
   }
 </style>
 

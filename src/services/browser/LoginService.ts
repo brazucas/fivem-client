@@ -1,4 +1,4 @@
-import { call } from './RageMPBrowserService';
+import { call } from './BrowserBridgeService';
 import { BrazucasEventos, DadosLogin, DadosRecuperarAcesso, DadosRegistro, Jogador } from "../../interfaces/brazucas";
 
 export function autenticar(usuario: string, senha: string): Promise<Jogador> {
