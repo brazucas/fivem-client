@@ -6,7 +6,7 @@
 <style type="text/scss">
   .body {
     /*background-color: red;*/
-    background: url(images/web-bg.jpg) no-repeat;
+    background: transparent;
     background-size: cover;
   }
 </style>
