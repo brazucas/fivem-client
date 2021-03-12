@@ -5,14 +5,14 @@ import 'ragemp-cef';
 
 export const serverEvent$: Subject<ServerEvent> = new Subject();
 
-export function call<T>(event: string, data: any): Promise<T> {
+export function call<T>(resource: string, event: string, data: any): Promise<T> {
   return new Promise(async (resolve, reject) => {
     const eventId = Math.round(Math.random() * 10000000);
 
     console.log(`Enviando evento ${BrazucasEventos.BROWSER}\nID: ${eventId}\nnome: ${event}\ndados: ${JSON.stringify(data)}`);
     // mp.trigger(BrazucasEventos.BROWSER, eventId, event, JSON.stringify(data));
 
-    await fetch(`http://${event}`, {
+    await fetch(`http://${resource}/${event}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -49,4 +49,8 @@ function serverEvent(eventId: number, event: string, data: any) {
     data: data,
     eventId: eventId,
   });
+}
+
+export function fecharNui() {
+  return call('brz_nui', 'Fechar', {})
 }

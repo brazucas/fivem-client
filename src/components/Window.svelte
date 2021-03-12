@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { call } from "../services/browser/BrowserBridgeService";
+  import { fecharNui } from "../services/browser/BrowserBridgeService";
 
   export let showHeader = true;
   export let minHeight = false;
@@ -10,10 +10,8 @@
   export let top = false;
   export let anim = true;
 
-  console.log('>>> teste4');
   const fechar = () => {
-    console.log('fechar!2');
-    call('browser/fechar', {})
+    fecharNui()
   }
 </script>
 
@@ -23,7 +21,7 @@
   .container {
     width: 50%;
     margin: 0 auto;
-    background-color: #383a3e;
+    background-color: rgba(56, 58, 62, .8);
     box-shadow: 0 9px 20px rgba(0, 0, 0, 0.3);
   }
 
@@ -39,9 +37,14 @@
     }
 
     &.superior-esquerdo {
+      .container {
+        width: auto;
+      }
+
       left: 100px;
       top: 100px;
       width: auto;
+      transform: perspective(4000px) rotate3d(0, 1, 0, 20deg);
     }
 
     &.centro-esquerdo {
@@ -80,13 +83,6 @@
       top: auto;
       left: auto;
     }
-  }
-
-  .container {
-    width: 50%;
-    margin: 0 auto;
-    background-color: #383a3e;
-    box-shadow: 0 9px 20px rgba(0, 0, 0, 0.3);
   }
 
   .header {
