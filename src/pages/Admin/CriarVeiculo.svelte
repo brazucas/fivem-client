@@ -49,6 +49,7 @@
   const enviar = async () => {
     try {
       await formValidation.validate(form, {abortEarly: false});
+      errors = {}
 
       try {
         await criarVeiculo({
@@ -57,9 +58,6 @@
           corSecundaria: form.corSecundaria,
           placa: form.placa,
           proprietario: form.proprietario,
-          posicaoX: form.posicaoX,
-          posicaoY: form.posicaoY,
-          posicaoZ: form.posicaoZ,
           trancado: form.trancado,
           motor: form.motor,
           transparencia: form.transparencia,
@@ -173,7 +171,8 @@
         <div class="posicao">
             <div class="form-group">
                 <label>Cor Primária</label>
-                <input placeholder="Selecione uma cor" class="campo" bind:value={form.corPrimaria}/>
+                <!-- css-unused-selector -->
+                <input placeholder="Selecione uma cor" class="campo" bind:value={form.corPrimaria} data-jscolor="{{}}"/>
 
                 {#if errors.corPrimaria}
                     <InvalidField message={errors.corPrimaria}/>
@@ -182,7 +181,7 @@
 
             <div class="form-group">
                 <label>Cor Secundária</label>
-                <input placeholder="Selecione uma cor" class="campo" bind:value={form.corSecundaria}/>
+                <input placeholder="Selecione uma cor" class="campo" bind:value={form.corSecundaria} data-jscolor="{{}}"/>
 
                 {#if errors.corSecundaria}
                     <InvalidField message={errors.corSecundaria}/>
