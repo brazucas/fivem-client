@@ -5,6 +5,7 @@ export enum BrazucasEventos {
   AUTENTICAR_JOGADOR = 'AutenticarJogador',
   CRIAR_VEICULO = 'CriarVeiculo',
   BANIR_JOGADOR = 'BanirJogador',
+  AUTOCOMPLETE_JOGADORES = 'AutocompleteJogadores',
   REGISTRAR_JOGADOR = 'RegistrarJogador',
   RECUPERAR_ACESSO = 'RecuperarAcesso',
   AUTENTICACAO_RESULTADO = 'AutenticacaoResultado',
@@ -146,4 +147,9 @@ export interface DadosBanirJogador {
   timeValue: number | null,
   timeUnit: string,
   reason: string,
+}
+
+export interface AutocompleteJogadores {
+  nome: number;
+  userId: string;
 }

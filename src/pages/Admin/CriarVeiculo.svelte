@@ -1,6 +1,6 @@
 <script lang="ts">
   import Window from '../..//components/Window.svelte';
-  import { mostrarErro, toast } from '../../services/common';
+  import { mostrarErro } from '../../services/common';
   import { object, string } from "yup";
   import { EnumToArray, extractErrors } from "../../helpers";
   import ImgCdn from "../../components/ImgCdn.svelte";
@@ -9,6 +9,8 @@
   import type { DadosVeiculo } from "../../interfaces/brazucas";
   import InvalidField from "../../components/Form/InvalidField.svelte";
   import { fecharNui } from "../../services/browser/BrowserBridgeService";
+  import InputAutoComplete from "../../components/InputAutoComplete.svelte";
+  import { buscarAutocompleteJogadores } from "../../services/browser/AdminService";
 
   let pesquisa = '';
 
@@ -181,7 +183,8 @@
 
             <div class="form-group">
                 <label>Cor Secundária</label>
-                <input placeholder="Selecione uma cor" class="campo" bind:value={form.corSecundaria} data-jscolor="{{}}"/>
+                <input placeholder="Selecione uma cor" class="campo" bind:value={form.corSecundaria}
+                       data-jscolor="{{}}"/>
 
                 {#if errors.corSecundaria}
                     <InvalidField message={errors.corSecundaria}/>
@@ -190,7 +193,10 @@
 
             <div class="form-group">
                 <label>Proprietário</label>
-                <input placeholder="Informe um nick válido" class="campo" bind:value={form.proprietario}/>
+
+                <InputAutoComplete placeholder="Informe um nick válido" service={buscarAutocompleteJogadores}
+                                   options={[]} bind:value={form.proprietario}/>
+                <!--                <input placeholder="Informe um nick válido" class="campo" bind:value={form.proprietario}/>-->
 
                 {#if errors.proprietario}
                     <InvalidField message={errors.proprietario}/>
