@@ -7,6 +7,7 @@ import Scoreboard from './pages/Scoreboard.svelte';
 import Celular from './pages/Celular.svelte';
 import Chat from './pages/Celular/Chat.svelte';
 import CriarVeiculo from './pages/Admin/CriarVeiculo.svelte';
+import BanirJogador from './pages/Admin/BanirJogador.svelte';
 import NotFound from './NotFound.svelte';
 
 export default {
@@ -18,6 +19,7 @@ export default {
   '/celular': Celular,
   '/celular/chat': Chat,
   '/admin/criar-veiculo': CriarVeiculo,
+  '/admin/banir-jogador': BanirJogador,
   '/hud': HUD,
   '*': NotFound,
 };
