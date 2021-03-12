@@ -2,7 +2,7 @@
   import routes from './routes';
   import Router from 'svelte-spa-router';
 
-  let display = false;
+  let display = true;
 
   window.addEventListener("message", function (event) {
     const item: any = event.data;

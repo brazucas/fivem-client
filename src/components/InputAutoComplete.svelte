@@ -1,7 +1,10 @@
 <script lang="ts">
   export let value: any;
   export let placeholder = 'Pesquisar...';
-  export let service;
+  export let service: (texto: string) => Promise<{
+    label: string;
+    value: string | number;
+  }[]>;
   export let options: Array<TOption>;
 
   type TOption = {
