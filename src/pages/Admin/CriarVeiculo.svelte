@@ -279,7 +279,7 @@
 
         <div class="flex items-center justify-between">
             <button type="submit" class="botao">Criar veículo</button>
-            <button type="button" class="botao">Cancelar</button>
+            <button type="button" class="botao" on:click={fecharNui}>Cancelar</button>
         </div>
     </form>
 </Window>
