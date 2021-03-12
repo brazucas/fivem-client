@@ -4,6 +4,7 @@ export enum BrazucasEventos {
   SERVER = 'server',
   AUTENTICAR_JOGADOR = 'AutenticarJogador',
   CRIAR_VEICULO = 'CriarVeiculo',
+  BANIR_JOGADOR = 'BanirJogador',
   REGISTRAR_JOGADOR = 'RegistrarJogador',
   RECUPERAR_ACESSO = 'RecuperarAcesso',
   AUTENTICACAO_RESULTADO = 'AutenticacaoResultado',
@@ -138,4 +139,11 @@ export interface DadosVeiculo {
   valorOriginal: number,
   valorVenda: number,
   aVenda: boolean,
+}
+
+export interface DadosBanirJogador {
+  playerId: number,
+  timeValue: number | null,
+  timeUnit: string,
+  reason: string,
 }

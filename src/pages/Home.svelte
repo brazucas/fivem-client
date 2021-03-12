@@ -51,6 +51,12 @@
             </button>
         </a>
 
+        <a href="#/admin/banir-jogador">
+            <button>
+                Banir jogador
+            </button>
+        </a>
+
         <h3>Outros</h3>
         <a href="#/hud">
             <button>
