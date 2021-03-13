@@ -150,6 +150,6 @@ export interface DadosBanirJogador {
 }
 
 export interface AutocompleteJogadores {
-  nome: number;
+  nome: string;
   userId: string;
 }
