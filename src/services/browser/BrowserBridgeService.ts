@@ -1,7 +1,8 @@
-import { Subject } from "rxjs";
+import { from, Subject } from "rxjs";
 import type { ServerEvent } from "../../interfaces/bridge";
 import { BrazucasEventos } from "../../interfaces/brazucas";
 import 'ragemp-cef';
+import { map } from "rxjs/operators";
 
 export const serverEvent$: Subject<ServerEvent> = new Subject();
 
@@ -19,7 +20,7 @@ export async function call<T>(resource: string, event: string, data: any): Promi
     body: JSON.stringify(data)
   });
 
-  return response.json();
+  return await from(response.text()).pipe(map((r) => JSON.parse(r))).toPromise();
 }
 
 function serverEvent(eventId: number, event: string, data: any) {
