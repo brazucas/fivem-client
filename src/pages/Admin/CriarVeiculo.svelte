@@ -1,14 +1,16 @@
 <script lang="ts">
   import Window from '../..//components/Window.svelte';
-  import { mostrarErro, toast } from '../../services/common';
+  import { mostrarErro } from '../../services/common';
   import { object, string } from "yup";
   import { EnumToArray, extractErrors } from "../../helpers";
   import ImgCdn from "../../components/ImgCdn.svelte";
   import { Veiculos } from "../../util/vehicles";
   import { criarVeiculo } from "../../services/browser/VeiculoService";
   import type { DadosVeiculo } from "../../interfaces/brazucas";
-  import { onMount } from "svelte";
   import InvalidField from "../../components/Form/InvalidField.svelte";
+  import { fecharNui } from "../../services/browser/BrowserBridgeService";
+  import InputAutoComplete from "../../components/InputAutoComplete.svelte";
+  import { buscarAutocompleteJogadores } from "../../services/browser/AdminService";
 
   let pesquisa = '';
 
@@ -22,9 +24,6 @@
     placa: string().required('A placa é obrigatória'),
     valorOriginal: string().required('O valor original é obrigatório'),
     valorVenda: string(),
-    posicaoX: string().required('A posição X é obrigatória'),
-    posicaoY: string().required('A posição Y é obrigatória'),
-    posicaoZ: string().required('A posição Z é obrigatória'),
     trancado: string(),
     aVenda: string(),
     motorLigado: string(),
@@ -38,9 +37,6 @@
     corSecundaria: '',
     placa: '',
     proprietario: '',
-    posicaoX: '',
-    posicaoY: '',
-    posicaoZ: '',
     trancado: true,
     motor: false,
     transparencia: 100,
@@ -55,6 +51,7 @@
   const enviar = async () => {
     try {
       await formValidation.validate(form, {abortEarly: false});
+      errors = {}
 
       try {
         await criarVeiculo({
@@ -63,9 +60,6 @@
           corSecundaria: form.corSecundaria,
           placa: form.placa,
           proprietario: form.proprietario,
-          posicaoX: form.posicaoX,
-          posicaoY: form.posicaoY,
-          posicaoZ: form.posicaoZ,
           trancado: form.trancado,
           motor: form.motor,
           transparencia: form.transparencia,
@@ -75,7 +69,7 @@
           aVenda: form.aVenda,
         });
 
-        toast('Veículo criado com sucesso!');
+        fecharNui()
       } catch (e) {
         await mostrarErro(e);
       }
@@ -87,6 +81,8 @@
 </script>
 
 <style lang="scss">
+  @import '../../app';
+
   select {
     width: 100%;
     background-color: transparent;
@@ -142,13 +138,13 @@
 
 </style>
 
-<Window>
+<Window position="top-left">
     <form on:submit|preventDefault={enviar}>
         <div class="titulo">Criando Veículo</div>
 
         <div class="container-veiculo">
             <div class="imagem-modelo">
-                <ImgCdn fileName="veiculos/{form.modelo}.png" alt=""
+                <ImgCdn fileName="vrp/images/vehicles/{form.modelo}.png" alt=""
                         width="200px"/>
             </div>
 
@@ -157,9 +153,9 @@
                     Modelo
                 </div>
 
-                <input placeholder="Pesquisar" class="form-control" bind:value={pesquisa}/>
+                <input placeholder="Pesquisar" class="campo" bind:value={pesquisa}/>
 
-                <select id="modelo" class="modelos form-control" size="6"
+                <select id="modelo" class="block" size="6"
                         bind:value={form.modelo}>
                     {#each listaVeiculos.filter(v => (v.toLowerCase().indexOf(pesquisa.toLowerCase()) !== -1) || !pesquisa.length) as veiculo}
                         <option value={veiculo.trim().toLowerCase()}>
@@ -177,7 +173,8 @@
         <div class="posicao">
             <div class="form-group">
                 <label>Cor Primária</label>
-                <input placeholder="Selecione uma cor" class="form-control" bind:value={form.corPrimaria}/>
+                <!-- css-unused-selector -->
+                <input placeholder="Selecione uma cor" class="campo" bind:value={form.corPrimaria} data-jscolor="{{}}"/>
 
                 {#if errors.corPrimaria}
                     <InvalidField message={errors.corPrimaria}/>
@@ -186,7 +183,8 @@
 
             <div class="form-group">
                 <label>Cor Secundária</label>
-                <input placeholder="Selecione uma cor" class="form-control" bind:value={form.corSecundaria}/>
+                <input placeholder="Selecione uma cor" class="campo" bind:value={form.corSecundaria}
+                       data-jscolor="{{}}"/>
 
                 {#if errors.corSecundaria}
                     <InvalidField message={errors.corSecundaria}/>
@@ -195,7 +193,10 @@
 
             <div class="form-group">
                 <label>Proprietário</label>
-                <input placeholder="Informe um nick válido" class="form-control" bind:value={form.proprietario}/>
+
+                <InputAutoComplete placeholder="Informe um nick válido" service={buscarAutocompleteJogadores}
+                                   options={[]} bind:value={form.proprietario}/>
+                <!--                <input placeholder="Informe um nick válido" class="campo" bind:value={form.proprietario}/>-->
 
                 {#if errors.proprietario}
                     <InvalidField message={errors.proprietario}/>
@@ -206,7 +207,7 @@
         <div class="posicao">
             <div class="form-group">
                 <label>Placa</label>
-                <input placeholder="Ex: BRZ5" class="form-control" bind:value={form.placa}/>
+                <input placeholder="Ex: BRZ5" class="campo" bind:value={form.placa}/>
 
                 {#if errors.placa}
                     <InvalidField message={errors.placa}/>
@@ -215,7 +216,7 @@
 
             <div class="form-group">
                 <label>Valor Original</label>
-                <input placeholder="Informe o valor" class="form-control" bind:value={form.valorOriginal}/>
+                <input placeholder="Informe o valor" class="campo" bind:value={form.valorOriginal}/>
 
                 {#if errors.valorOriginal}
                     <InvalidField message={errors.valorOriginal}/>
@@ -224,7 +225,7 @@
 
             <div class="form-group">
                 <label>Valor Venda</label>
-                <input placeholder="Informe o valor" class="form-control" bind:value={form.valorVenda}/>
+                <input placeholder="Informe o valor" class="campo" bind:value={form.valorVenda}/>
 
                 {#if errors.valorVenda}
                     <InvalidField message={errors.valorVenda}/>
@@ -232,39 +233,10 @@
             </div>
         </div>
 
-        <div class="posicao">
-            <div class="form-group">
-                <label>Posição X</label>
-                <input placeholder="Informe a posição" class="form-control" bind:value={form.posicaoX}/>
-
-                {#if errors.posicaoX}
-                    <InvalidField message={errors.posicaoX}/>
-                {/if}
-            </div>
-
-            <div class="form-group">
-                <label>Posição Y</label>
-                <input placeholder="Informe a posição" class="form-control" bind:value={form.posicaoY}/>
-
-                {#if errors.posicaoY}
-                    <InvalidField message={errors.posicaoY}/>
-                {/if}
-            </div>
-
-            <div class="form-group">
-                <label>Posição Z</label>
-                <input placeholder="Informe a posição" class="form-control" bind:value={form.posicaoZ}/>
-
-                {#if errors.posicaoZ}
-                    <InvalidField message={errors.posicaoZ}/>
-                {/if}
-            </div>
-        </div>
-
         <div class="booleans">
             <div class="form-group">
                 <label>Trancado?</label>
-                <input type="checkbox" class="form-control" bind:value={form.trancado}/>
+                <input type="checkbox" bind:value={form.trancado}/>
 
                 {#if errors.trancado}
                     <InvalidField message={errors.trancado}/>
@@ -273,7 +245,7 @@
 
             <div class="form-group">
                 <label>A Venda?</label>
-                <input type="checkbox" class="form-control" bind:value={form.aVenda}/>
+                <input type="checkbox" bind:value={form.aVenda}/>
 
                 {#if errors.aVenda}
                     <InvalidField message={errors.aVenda}/>
@@ -282,7 +254,7 @@
 
             <div class="form-group">
                 <label>Motor ligado?</label>
-                <input type="checkbox" class="form-control" bind:value={form.motor}/>
+                <input type="checkbox" bind:value={form.motor}/>
 
                 {#if errors.motor}
                     <InvalidField message={errors.motor}/>
@@ -293,7 +265,7 @@
         <div class="posicao">
             <div class="form-group">
                 <label>Transparência</label>
-                <input placeholder="Informe o valor" class="form-control" bind:value={form.transparencia}/>
+                <input placeholder="Informe o valor" class="campo" bind:value={form.transparencia}/>
 
                 {#if errors.transparencia}
                     <InvalidField message={errors.transparencia}/>
@@ -302,7 +274,7 @@
 
             <div class="form-group">
                 <label>Tamanho</label>
-                <input placeholder="Informe o valor" class="form-control" bind:value={form.tamanho}/>
+                <input placeholder="Informe o valor" class="campo" bind:value={form.tamanho}/>
 
                 {#if errors.tamanho}
                     <InvalidField message={errors.tamanho}/>
@@ -310,6 +282,9 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Criar veículo</button>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="botao">Criar veículo</button>
+            <button type="button" class="botao" on:click={fecharNui}>Cancelar</button>
+        </div>
     </form>
 </Window>
