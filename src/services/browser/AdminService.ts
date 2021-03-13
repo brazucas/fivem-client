@@ -11,7 +11,7 @@ export const buscarAutocompleteJogadores = (texto: string): Promise<{
   label: string;
   value: string | number;
 }[]> => {
-  return from(call<AutocompleteJogadores[]>('brz_admin', BrazucasEventos.AUTOCOMPLETE_JOGADORES, texto))
+  return from(call<AutocompleteJogadores[]>('brz_misc', BrazucasEventos.AUTOCOMPLETE_JOGADORES, texto))
     .pipe(
       map((result) => result.map((jogador) => {
         return {
