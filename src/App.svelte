@@ -1,11 +1,20 @@
 <script lang="ts">
   import routes from './routes';
   import Router from 'svelte-spa-router';
+  import { jogador } from "./services/common";
 
   let display = false;
 
   window.addEventListener("message", function (event) {
     const item: any = event.data;
+
+    console.log('>>> possui item.user_id? ', item.user_id);
+    if (item.user_id) {
+      jogador.update((u) => {
+        u.id = item.user_id;
+        return u;
+      });
+    }
 
     if (item.event) {
       switch (item.event) {

@@ -54,6 +54,7 @@ export interface DadosRegistro {
 }
 
 export interface Jogador {
+  id: string,
   nome: string,
   email: string,
   celular?: string,

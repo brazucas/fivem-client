@@ -1,15 +1,22 @@
 import { from, Subject } from "rxjs";
 import type { ServerEvent } from "../../interfaces/bridge";
-import { BrazucasEventos } from "../../interfaces/brazucas";
 import 'ragemp-cef';
 import { map } from "rxjs/operators";
+import { jogador } from "../common";
+import { get } from "svelte/store";
 
 export const serverEvent$: Subject<ServerEvent> = new Subject();
 
 export async function call<T>(resource: string, event: string, data: any): Promise<T> {
   const eventId = Math.round(Math.random() * 10000000);
 
-  console.log(`Enviando evento ${BrazucasEventos.BROWSER}\nID: ${eventId}\nnome: ${event}\ndados: ${JSON.stringify(data)}`);
+  console.log(`Enviando evento ${event}\nResource: ${resource}\nID: ${eventId}\ndados: ${JSON.stringify(data)}`);
+
+  const _data = {
+    eventId,
+    data,
+    user_id: get(jogador).id
+  };
 
   const response = await fetch(`http://${resource}/${event}`, {
     method: 'POST',
@@ -17,7 +24,7 @@ export async function call<T>(resource: string, event: string, data: any): Promi
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(_data)
   });
 
   return await from(response.text()).pipe(map((r) => JSON.parse(r))).toPromise();

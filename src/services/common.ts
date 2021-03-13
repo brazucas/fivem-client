@@ -17,6 +17,7 @@ export const playerHudMenuAtivo = new BehaviorSubject<boolean>(false);
 export const voiceChatListeners = writable<Array<VoiceChatListener>>([]);
 
 export const jogador = writable<Jogador>({
+  id: null,
   nome: 'Carregando...',
   email: '',
   fome: Fome.MAXIMO,
