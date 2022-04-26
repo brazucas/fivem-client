@@ -1,3 +1,12 @@
+# REPOSITÓRIO ARQUIVADO
+**O servidor agora está sendo desenvolvido com código-fonte fechado, este repositório foi arquivado e permancerá disponível apenas como histórico.**
+
+
+
+================================================
+
+
+
 ### Código client-side do servidor do BRZ no RageMP.
 
 <table>
